@@ -37,6 +37,9 @@ jobs:
       - name: Install staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
 
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+
       - name: Run Style
         run: test -z $(go fmt ./...)
 
