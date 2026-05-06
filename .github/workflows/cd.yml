@@ -21,8 +21,13 @@ jobs:
       - name: Build Prod
         run: scripts/buildprod.sh
 
-      - name: Set up Gcloud
-        uses: google-github-actions/setup-gcloud@v3
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Set up cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
 
       - name: Use gcloud CLI
         run: gcloud info
